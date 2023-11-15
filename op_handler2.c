@@ -21,3 +21,14 @@ void add(stack_t **head, unsigned int line_num)
 	*head = current->next;
 	free(current);
 }
+
+/**
+ * nop - doesn’t do anything.
+ * @stack: address to the top of the stack
+ * @line_number: line number for opcode
+ * Return: void
+ */
+void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused))
+unsigned int line_number)
+{
+}
