@@ -35,24 +35,22 @@ void pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	print_stack(*stack);
 }
 
+#include "monty.h"
+
 /**
- * is_integer - checks if an string is an integer or not
- * @str: string to be checked
- * Return: 1 if it is an integer, 0 otherwise
- */
-int is_integer(const char *str)
+ * pint - prints the value at the top of the stack followed by a newline
+ * @head: address to the head of the stack
+ * @line_num: line number it orignates from
+ * Return: void
+*/
+void pint(stack_t **head, unsigned int line_num)
 {
-	if (str == NULL || *str == '\0')
-		return (0); /*Not integer*/
-
-	if (*str == '+' || *str == '-')
-		str++;
-
-	while (*str != '\0')
-	{
-		if (!isdigit(*str))
-			return (0); /*Not Integer*/
-		str++;
-	}
-	return (1); /*Is integer*/
+	if (head != NULL)
+		if (*head == NULL)
+		{
+			fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
+		}
+	printf("%d\n", (*head)->n);
 }

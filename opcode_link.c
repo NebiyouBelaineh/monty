@@ -12,6 +12,7 @@ void opcode_link(stack_t **stack, char *op[])
 	instruction_t op_handlers[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 		};
 	unsigned int i;
