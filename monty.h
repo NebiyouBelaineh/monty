@@ -88,6 +88,8 @@ void pchar(stack_t **head, unsigned int line_num);
 void pstr(stack_t **head, unsigned int line_num);
 void rotl(__attribute__((unused)) stack_t **head, __attribute__((unused))
 unsigned int line_num);
+void rotr(__attribute__((unused)) stack_t **head, __attribute__((unused))
+unsigned int line_num);
 
 
 int is_integer(const char *str);

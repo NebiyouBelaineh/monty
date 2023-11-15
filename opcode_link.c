@@ -24,6 +24,7 @@ void opcode_link(stack_t **stack, char *op[])
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 		};
 	unsigned int i;

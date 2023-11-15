@@ -106,3 +106,27 @@ unsigned int line_num)
 	add_node_end(head, temp->n);
 	free(temp);
 }
+
+/**
+ * rotr - rotates the stack to the down.
+ * @head: address to the head of the stack
+ * @line_num: line number it orignates from
+ * Return: void
+ */
+void rotr(__attribute__((unused)) stack_t **head, __attribute__((unused))
+unsigned int line_num)
+{
+	stack_t *current;
+
+	if (head != NULL)
+	{
+		if (*head == NULL)
+			return;
+	}
+	current = *head;
+	while (current->next != NULL)
+		current = current->next;
+	add_dnodeint(head, current->n);
+	current->prev->next = NULL;
+	free(current);
+}
