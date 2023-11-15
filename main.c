@@ -39,7 +39,8 @@ int main(int ac, char *av[])
 			/*Call opcode_link()*/
 			t_inf.token_str = line_tok[0];
 			t_inf.token_arg = line_tok[1];
-			opcode_link(&head, line_tok);
+			if (line_tok[0] != NULL)
+				opcode_link(&head, line_tok);
 			for (index = 0; line_tok[index] != NULL; index++)
 			{
 				free(line_tok[index]);
