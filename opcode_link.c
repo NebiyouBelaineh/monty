@@ -20,7 +20,10 @@ void opcode_link(stack_t **stack, char *op[])
 	for (i = 0; op_handlers[i].opcode != NULL; i++)
 	{
 		if (strcmp(op_handlers[i].opcode, op[0]) == 0)
+		{
 			op_handlers[i].f(stack, t_inf.line_num);
+			return;
+		}
 	}
 	if (op_handlers[i].opcode == NULL)
 	{
