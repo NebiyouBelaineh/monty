@@ -76,6 +76,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_num);
 void pop(stack_t **head, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_number);
 
 int is_integer(const char *str);
 
@@ -90,5 +91,6 @@ void pop_tos(stack_t **head);
 
 void free_stack(stack_t *head);
 void free_mem(char *arr[]);
+void free_helper(stack_t *head, char *arr[], char *str);
 
 #endif/*MONTY_H*/

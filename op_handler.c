@@ -30,7 +30,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @line_number: line number for opcode
  * Return: void
  */
-void pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	if (stack == NULL && *stack == NULL)
 		return;
@@ -42,17 +42,14 @@ void pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
  * @head: address to the head of the stack
  * @line_num: line number it orignates from
  * Return: void
-*/
+ */
 void pint(stack_t **head, unsigned int line_num)
 {
 	if (head != NULL)
 		if (*head == NULL)
 		{
 			fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
-			free_stack(*head);
-			free_mem(t_inf.arr);
-			free(t_inf.str);
-			fclose(t_inf.f);
+			free_helper(*head, t_inf.arr, t_inf.str);
 			exit(EXIT_FAILURE);
 		}
 	printf("%d\n", (*head)->n);
@@ -63,18 +60,60 @@ void pint(stack_t **head, unsigned int line_num)
  * @head: address to the head of the stack
  * @line_num: line number it orignates from
  * Return: void
-*/
+ */
 void pop(stack_t **head, unsigned int line_num)
 {
 	if (head != NULL)
 		if (*head == NULL)
 		{
 			fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
-			free_stack(*head);
-			free_mem(t_inf.arr);
-			free(t_inf.str);
+			free_helper(*head, t_inf.arr, t_inf.str);
 			fclose(t_inf.f);
 			exit(EXIT_FAILURE);
 		}
 	pop_tos(head);
+}
+
+/**
+ * swap - swaps the top two elements of the stack.
+ * @head: address to the top of the stack
+ * @line_num: line number for opcode
+ * Return: void
+ */
+void swap(stack_t **head, unsigned int line_num)
+{
+	int count = 0, temp;
+	stack_t *current, *temp1, *temp2;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		free_helper(*head, t_inf.arr, t_inf.str);
+		fclose(t_inf.f);
+		exit(EXIT_FAILURE);
+	}
+	if (head != NULL)
+		current = *head;
+	if (current == current->next)
+		return;
+	while (current != NULL)
+	{
+		current = current->next;
+		count++;
+	}
+	if (count < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		free_helper(*head, t_inf.arr, t_inf.str);
+		fclose(t_inf.f);
+		exit(EXIT_FAILURE);
+	}
+	current = *head;
+
+	temp1 = current;
+	temp2 = current->next;
+
+	temp = temp1->n;
+	temp1->n = temp2->n;
+	temp2->n = temp;
 }
