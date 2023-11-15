@@ -18,6 +18,7 @@ void opcode_link(stack_t **stack, char *op[])
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", divide},
 		{NULL, NULL}
 		};
 	unsigned int i;

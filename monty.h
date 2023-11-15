@@ -81,6 +81,8 @@ void add(stack_t **head, unsigned int line_num);
 void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused))
 unsigned int line_number);
 void sub(stack_t **head, unsigned int line_num);
+void divide(stack_t **head, unsigned int line_num);
+
 
 int is_integer(const char *str);
 
