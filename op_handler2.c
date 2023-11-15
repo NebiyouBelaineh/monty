@@ -72,6 +72,13 @@ void divide(stack_t **head, unsigned int line_num)
 		fclose(t_inf.f);
 		exit(EXIT_FAILURE);
 	}
+	if (current->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_num);
+		free_helper(*head, t_inf.arr, t_inf.str);
+		fclose(t_inf.f);
+		exit(EXIT_FAILURE);
+	}
 	current->next->n = current->next->n / current->n;
 	*head = current->next;
 	free(current);
