@@ -50,6 +50,8 @@ typedef struct instruction_s
  * @token_arg: argument for opcode str
  * @line_num: line number the token originates from
  * @f: FILE descriptor for opened monty file
+ * @arr: contains array of tokens read from a line
+ * @str: contains a string read from a single line
  *
  * Description: track monty file info along with their line number
  */
@@ -73,6 +75,7 @@ char *_strdup(char *str);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_num);
+void pop(stack_t **head, unsigned int line_num);
 
 int is_integer(const char *str);
 
@@ -80,6 +83,10 @@ char *strdup(const char *s);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 void opcode_link(stack_t **head, char *op[]);
+
+stack_t *add_dnodeint(stack_t **head, const int n);
+void print_stack(stack_t *h);
+void pop_tos(stack_t **head);
 
 void free_stack(stack_t *head);
 void free_mem(char *arr[]);

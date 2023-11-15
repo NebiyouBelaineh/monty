@@ -5,15 +5,13 @@
  *
  * Return: the number of nodes in the list
 */
-size_t print_stack(const stack_t *h)
+void print_stack(stack_t *h)
 {
-	size_t count = 0;
+	stack_t *current = h;
 
-	while (h != NULL)
+	while (current != NULL)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
-		count++;
+		printf("%d\n", current->n);
+		current = current->next;
 	}
-	return (count);
 }
