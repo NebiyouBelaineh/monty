@@ -35,7 +35,7 @@ int main(int ac, char *av[])
 		tokenize_input_line(t_inf.str, t_inf.arr, idx_ptr, "  \t\n");
 		t_inf.token_str = t_inf.arr[0];
 		t_inf.token_arg = t_inf.arr[1];
-		if (t_inf.arr[0] != NULL)/*Call opcode_link()*/
+		if (t_inf.arr[0] != NULL && *t_inf.arr[0] != '#')/*Call opcode_link()*/
 			opcode_link(&head, t_inf.arr);
 		for (index = 0; t_inf.arr[index] != NULL; index++)
 			free(t_inf.arr[index]);
