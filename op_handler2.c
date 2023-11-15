@@ -18,5 +18,6 @@ void add(stack_t **head, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 	current->next->n = current->n + current->next->n;
-	*head = (*head)->next;
+	*head = current->next;
+	free(current);
 }
