@@ -77,6 +77,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_num);
 void pop(stack_t **head, unsigned int line_num);
 void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **head, unsigned int line_num);
 
 int is_integer(const char *str);
 

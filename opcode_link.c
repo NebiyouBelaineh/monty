@@ -15,6 +15,7 @@ void opcode_link(stack_t **stack, char *op[])
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 		};
 	unsigned int i;
