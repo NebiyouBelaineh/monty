@@ -59,6 +59,8 @@ typedef struct token_s
 	char *token_arg;
 	int line_num;
 	FILE *f;
+	char *arr[1000];
+	char *str;
 } l_token_t;
 
 extern l_token_t t_inf;
@@ -80,5 +82,6 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void opcode_link(stack_t **head, char *op[]);
 
 void free_stack(stack_t *head);
+void free_mem(char *arr[]);
 
 #endif/*MONTY_H*/

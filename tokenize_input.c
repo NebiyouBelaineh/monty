@@ -24,6 +24,9 @@ char *delim)
 		if (line_tok[index] == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
+			free_mem(t_inf.arr);
+			free(t_inf.str);
+			fclose(t_inf.f);
 			exit(EXIT_FAILURE);
 		}
 		strcpy(line_tok[index], token);

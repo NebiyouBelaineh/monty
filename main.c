@@ -1,5 +1,5 @@
 #include "monty.h"
-l_token_t t_inf = {NULL, NULL, 0, NULL};
+l_token_t t_inf = {NULL, NULL, 0, NULL, {NULL}, NULL};
 
 void free_stack(stack_t *head);
 /**
@@ -14,7 +14,7 @@ int main(int ac, char *av[])
 	int index = 0, l_count = 1, index2 = 0, *idx_ptr = &index2;
 	ssize_t bytesRead;
 	size_t len = 0;
-	char *line = NULL, *line_tok[1000];
+	/*, *line_tok[1000] */
 	FILE *fd;
 	stack_t *head = NULL;
 
@@ -31,25 +31,25 @@ int main(int ac, char *av[])
 	}
 	t_inf.f = fd;
 	t_inf.line_num = l_count;
-	while ((bytesRead = getline(&line, &len, fd)) != -1)
+	while ((bytesRead = getline(&t_inf.str, &len, fd)) != -1)
 	{
-		line[strcspn(line, "\n")] = 0;
-		tokenize_input_line(line, line_tok, idx_ptr, " \t\n");
+		t_inf.str[strcspn(t_inf.str, "\n")] = 0;
+		tokenize_input_line(t_inf.str, t_inf.arr, idx_ptr, "  \t\n");
 		{
 			/*Call opcode_link()*/
-			t_inf.token_str = line_tok[0];
-			t_inf.token_arg = line_tok[1];
-			if (line_tok[0] != NULL)
-				opcode_link(&head, line_tok);
-			for (index = 0; line_tok[index] != NULL; index++)
+			t_inf.token_str = t_inf.arr[0];
+			t_inf.token_arg = t_inf.arr[1];
+			if (t_inf.arr[0] != NULL)
+				opcode_link(&head, t_inf.arr);
+			for (index = 0; t_inf.arr[index] != NULL; index++)
 			{
-				free(line_tok[index]);
+				free(t_inf.arr[index]);
 			}
 		}
 		l_count++;
 		t_inf.line_num = l_count;
 	}
-	free(line);
+	free(t_inf.str);
 	fclose(fd);
 	free_stack(head);
 	return (EXIT_SUCCESS);

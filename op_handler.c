@@ -17,6 +17,10 @@ void push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_mem(t_inf.arr);
+		free_stack(*stack);
+		free(t_inf.str);
+		fclose(t_inf.f);
 		exit(EXIT_FAILURE);
 	}
 	add_dnodeint(stack, num);
@@ -50,6 +54,9 @@ void pint(stack_t **head, unsigned int line_num)
 		{
 			fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 			free_stack(*head);
+			free_mem(t_inf.arr);
+			free(t_inf.str);
+			fclose(t_inf.f);
 			exit(EXIT_FAILURE);
 		}
 	printf("%d\n", (*head)->n);

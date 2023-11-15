@@ -22,5 +22,15 @@ void opcode_link(stack_t **stack, char *op[])
 		if (strcmp(op_handlers[i].opcode, op[0]) == 0)
 			op_handlers[i].f(stack, t_inf.line_num);
 	}
+	if (op_handlers[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%d: unknown instruction <opcode>\n", t_inf.line_num);
+		free_mem(t_inf.arr);
+		free_stack(*stack);
+		free(t_inf.str);
+		fclose(t_inf.f);
+		exit(EXIT_FAILURE);
+	}
+
 
 }
