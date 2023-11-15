@@ -86,6 +86,8 @@ void mul(stack_t **head, unsigned int line_num);
 void mod(stack_t **head, unsigned int line_num);
 void pchar(stack_t **head, unsigned int line_num);
 void pstr(stack_t **head, unsigned int line_num);
+void rotl(__attribute__((unused)) stack_t **head, __attribute__((unused))
+unsigned int line_num);
 
 
 int is_integer(const char *str);
@@ -98,6 +100,7 @@ void opcode_link(stack_t **head, char *op[]);
 stack_t *add_dnodeint(stack_t **head, const int n);
 void print_stack(stack_t *h);
 void pop_tos(stack_t **head);
+void add_node_end(stack_t **head, int n);
 
 void free_stack(stack_t *head);
 void free_mem(char *arr[]);
