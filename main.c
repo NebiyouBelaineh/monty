@@ -1,7 +1,6 @@
 #include "monty.h"
 l_token_t t_inf = {NULL, NULL, 0, NULL, {NULL}, NULL};
 
-void free_stack(stack_t *head);
 /**
  * main - handles instructions from Monty byte code files
  * @ac: argument count
@@ -14,7 +13,6 @@ int main(int ac, char *av[])
 	int index = 0, l_count = 1, index2 = 0, *idx_ptr = &index2;
 	ssize_t bytesRead;
 	size_t len = 0;
-	/*, *line_tok[1000] */
 	FILE *fd;
 	stack_t *head = NULL;
 
@@ -35,17 +33,12 @@ int main(int ac, char *av[])
 	{
 		t_inf.str[strcspn(t_inf.str, "\n")] = 0;
 		tokenize_input_line(t_inf.str, t_inf.arr, idx_ptr, "  \t\n");
-		{
-			/*Call opcode_link()*/
-			t_inf.token_str = t_inf.arr[0];
-			t_inf.token_arg = t_inf.arr[1];
-			if (t_inf.arr[0] != NULL)
-				opcode_link(&head, t_inf.arr);
-			for (index = 0; t_inf.arr[index] != NULL; index++)
-			{
-				free(t_inf.arr[index]);
-			}
-		}
+		t_inf.token_str = t_inf.arr[0];
+		t_inf.token_arg = t_inf.arr[1];
+		if (t_inf.arr[0] != NULL)/*Call opcode_link()*/
+			opcode_link(&head, t_inf.arr);
+		for (index = 0; t_inf.arr[index] != NULL; index++)
+			free(t_inf.arr[index]);
 		l_count++;
 		t_inf.line_num = l_count;
 	}
