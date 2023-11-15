@@ -28,3 +28,29 @@ void mod(stack_t **head, unsigned int line_num)
 	*head = current->next;
 	free(current);
 }
+
+/**
+* pchar - prints the ascii character equivalent for the integer at the TOS
+* followed by a newline
+* @head: address to the head of the stack
+* @line_num: line number it orignates from
+* Return: void
+*/
+void pchar(stack_t **head, unsigned int line_num)
+{
+	if (head != NULL)
+		if (*head == NULL)
+		{
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+			free_helper(*head, t_inf.arr, t_inf.str);
+			exit(EXIT_FAILURE);
+		}
+	if ((*head)->n >= 33 && (*head)->n <= 126)
+		printf("%c\n", (*head)->n);
+	else
+		{
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+			free_helper(*head, t_inf.arr, t_inf.str);
+			exit(EXIT_FAILURE);
+		}
+}
