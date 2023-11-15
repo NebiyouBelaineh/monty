@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
-* mod - modulo of top two elements of the stack.
-* @head: address to the top of the stack
-* @line_num: line number for opcode
-* Return: void
-*/
+ * mod - modulo of top two elements of the stack.
+ * @head: address to the top of the stack
+ * @line_num: line number for opcode
+ * Return: void
+ */
 void mod(stack_t **head, unsigned int line_num)
 {
 	stack_t *current = *head;
@@ -30,12 +30,12 @@ void mod(stack_t **head, unsigned int line_num)
 }
 
 /**
-* pchar - prints the ascii character equivalent for the integer at the TOS
-* followed by a newline
-* @head: address to the head of the stack
-* @line_num: line number it orignates from
-* Return: void
-*/
+ * pchar - prints the ascii character equivalent for the integer at the TOS
+ * followed by a newline
+ * @head: address to the head of the stack
+ * @line_num: line number it orignates from
+ * Return: void
+ */
 void pchar(stack_t **head, unsigned int line_num)
 {
 	if (head != NULL)
@@ -48,9 +48,38 @@ void pchar(stack_t **head, unsigned int line_num)
 	if ((*head)->n >= 33 && (*head)->n <= 126)
 		printf("%c\n", (*head)->n);
 	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+		free_helper(*head, t_inf.arr, t_inf.str);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * pstr - prints the string starting at the TOS, followed by a new line.
+ * followed by a newline
+ * @head: address to the head of the stack
+ * @line_num: line number it orignates from
+ * Return: void
+ */
+void pstr(stack_t **head, __attribute__((unused)) unsigned int line_num)
+{
+	stack_t *current;
+
+	if (head != NULL)
+		if (*head == NULL)
 		{
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
-			free_helper(*head, t_inf.arr, t_inf.str);
-			exit(EXIT_FAILURE);
+			putchar('\n');
+			return;
 		}
+	current = *head;
+	while (current != NULL)
+	{
+		if ((current)->n >= 33 && (*head)->n <= 126)
+			printf("%c", (current)->n);
+		else
+			break;
+		current = current->next;
+	}
+	putchar('\n');
 }

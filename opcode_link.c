@@ -22,6 +22,7 @@ void opcode_link(stack_t **stack, char *op[])
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 		};
 	unsigned int i;
