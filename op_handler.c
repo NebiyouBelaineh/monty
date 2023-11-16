@@ -15,12 +15,19 @@ void push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_mem(t_inf.arr);
-		free_stack(*stack);
-		free(t_inf.str);
+		free_helper(*stack, t_inf.arr, t_inf.str);
 		fclose(t_inf.f);
 		exit(EXIT_FAILURE);
 	}
+	if (t_inf.mode != NULL)
+	{
+		if (strcmp(t_inf.mode, "queue") == 0)
+		{
+			add_node_end(stack, num);
+			return;
+		}
+	}
+	/*Defaults to stack*/
 	add_dnodeint(stack, num);
 }
 

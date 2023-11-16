@@ -1,5 +1,5 @@
 #include "monty.h"
-l_token_t t_inf = {NULL, NULL, 0, NULL, {NULL}, NULL};
+l_token_t t_inf = {NULL, NULL, 0, NULL, {NULL}, NULL, NULL};
 
 /**
  * main - handles instructions from Monty byte code files

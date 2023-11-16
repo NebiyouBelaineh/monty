@@ -25,6 +25,8 @@ void opcode_link(stack_t **stack, char *op[])
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"stack", is_stack},
+		{"queue", is_queue},
 		{NULL, NULL}
 		};
 	unsigned int i;
@@ -41,9 +43,7 @@ void opcode_link(stack_t **stack, char *op[])
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", t_inf.line_num,
 		t_inf.token_str);
-		free_mem(t_inf.arr);
-		free_stack(*stack);
-		free(t_inf.str);
+		free_helper(*stack, t_inf.arr, t_inf.str);
 		fclose(t_inf.f);
 		exit(EXIT_FAILURE);
 	}

@@ -63,6 +63,7 @@ typedef struct token_s
 	FILE *f;
 	char *arr[1000];
 	char *str;
+	char *mode;
 } l_token_t;
 
 extern l_token_t t_inf;
@@ -90,6 +91,10 @@ void rotl(__attribute__((unused)) stack_t **head, __attribute__((unused))
 unsigned int line_num);
 void rotr(__attribute__((unused)) stack_t **head, __attribute__((unused))
 unsigned int line_num);
+void is_stack(__attribute__((unused)) stack_t **stack, __attribute__((unused))
+unsigned int line_number);
+void is_queue(__attribute__((unused)) stack_t **stack, __attribute__((unused))
+unsigned int line_number);
 
 
 int is_integer(const char *str);
