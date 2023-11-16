@@ -77,7 +77,7 @@ void pstr(stack_t **head, __attribute__((unused)) unsigned int line_num)
 	current = *head;
 	while (current != NULL)
 	{
-		if ((current)->n >= 33 && (*head)->n <= 126)
+		if ((current)->n >= 1 && (*head)->n <= 127)
 			printf("%c", (current)->n);
 		else
 			break;
